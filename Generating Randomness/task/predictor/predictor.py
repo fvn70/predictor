@@ -1,3 +1,4 @@
+triads = ["000", "001", "010", "011", "100", "101", "110", "111"]
 s = []
 max = 100
 while True:
@@ -8,4 +9,10 @@ while True:
         print(f'Current data length is {ln}, {max - ln} symbols left')
     else:
         break
-print(f'\nFinal data string:\n{"".join(s)}')
+ss = "".join(s)
+print(f'\nFinal data string:\n{ss}\n')
+
+quads = [ss[i:i+4] for i in range(len(ss))][:-3]
+dic = {t: (quads.count(t + '0'), quads.count(t + '1')) for t in triads}
+for k, v in dic.items():
+    print(f'{k}: {v[0]},{v[1]}')
